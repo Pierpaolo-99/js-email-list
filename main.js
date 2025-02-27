@@ -12,8 +12,6 @@ const inputEl = document.getElementById('GENERA')
 
 function generateEmailList (n){
 
-    const arrayEmailList = []
-
     for (let i = 0; i < n; i++){
 
         fetch ('https://flynn.boolean.careers/exercises/api/random/mail')
@@ -24,33 +22,17 @@ function generateEmailList (n){
             const randomEmail = data.response
             console.log(randomEmail);
     
-            arrayEmailList.push(randomEmail) 
+            listEl.innerHTML += (`<li class="list-group-item">${randomEmail}</li>`) 
         })
     }
-    return arrayEmailList
 }
-const emailList = generateEmailList(10)
-console.log(emailList);
 
-listEl.innerHTML += `<li class="list-group-item">${emailList}</li>`
-
+generateEmailList(10)
 
 inputEl.addEventListener('click', function(){
 
     listEl.innerHTML = ''
 
-    for (let i = 0; i < 10; i++){
-
-        fetch ('https://flynn.boolean.careers/exercises/api/random/mail')
-        .then(response => response.json())
-        .then (data => {
-            console.log(data, data.response);
-        
-            const randomEmail = data.response
-            console.log(randomEmail);
-
-            listEl.innerHTML += `<li class="list-group-item">${randomEmail}</li>`
-        })
-    }
+    generateEmailList(10)
 })
 
