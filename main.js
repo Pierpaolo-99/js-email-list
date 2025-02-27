@@ -24,6 +24,7 @@ for (let i = 0; i < 10; i++){
 
 inputEl.addEventListener('click', function(){
 
+    listEl.innerHTML = ''
 
     for (let i = 0; i < 10; i++){
 
@@ -34,7 +35,7 @@ inputEl.addEventListener('click', function(){
         
             const randomEmail = data.response
             console.log(randomEmail);
-    
+
             listEl.innerHTML += `<li class="list-group-item">${randomEmail}</li>`
         })
     }
